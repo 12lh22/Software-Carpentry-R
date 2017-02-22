@@ -1,4 +1,5 @@
 # to comment out a block of code, use ctrl+shift+c
+library(gapminder)
 gap <- gapminder
 number <- -11
 if (number > 0) {
@@ -32,3 +33,16 @@ for (continent in unique(gap$continent)) {
   print(continent)
   print(mean(data$pop))
 }
+
+# get the mean gdp in billions for every country
+
+for (country in unique(gap$country)) {
+  data <- gap[gap$country == country, ]
+  data$gdp <- data$pop * data$gdpPercap / 1e9
+  print(country)
+  print(mean(data$gdp))
+}
+
+# better ways of doing things!
+
+ 
